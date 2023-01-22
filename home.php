@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/koneksi/koneksi.php';
+require __DIR__ . '/functions/session-check.php';
 ?>
 <?php require __DIR__ . '/layouts/resources.php'; ?>
 
@@ -21,6 +22,5 @@ require __DIR__ . '/koneksi/koneksi.php';
             </div>
 
         </div><!-- Main Wrapper -->
-
 
         <?php require __DIR__ . '/layouts/footer.php'; ?>

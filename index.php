@@ -2,13 +2,6 @@
 require __DIR__ . '/koneksi/koneksi.php';
 require __DIR__ . '/functions/has-login.php';
 
-function pathName($path)
-{
-
-    $pathInfo = pathinfo(basename($path), PATHINFO_FILENAME);
-    return $pathInfo;
-}
-
 if (isset($_GET['destination'])) {
     $_SESSION['destination'] = $_GET['destination'];
 }
@@ -37,8 +30,8 @@ if (isset($_GET['destination'])) {
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Kata Sandi ..." required>
                             </div>
                             <div class="custom-control custom-checkbox form-group">
-                                <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                <label class="custom-control-label" for="exampleCheck1">Ingat saya</label>
+                                <input type="checkbox" class="custom-control-input" id="ingat">
+                                <label class="custom-control-label" for="ingat">Ingat saya</label>
                             </div>
                             <button type="submit" name="login" class="btn btn-primary">Login</button>
                         </form>

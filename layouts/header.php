@@ -36,10 +36,6 @@
                 <li class="dropdown nav-item d-md-block">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?= $hostToRoot ?>/wp-content/assets/images/avatars/avatar1.png" alt="" class="rounded-circle"></a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Calendar</a></li>
-                        <li><a href="#"><span class="badge float-right badge-info">64</span>Messages</a></li>
-                        <li role="separator" class="divider"></li>
                         <li><a href="#">Account Settings</a></li>
                         <li><a href="<?= $hostToRoot ?>logout">Log Out</a></li>
                     </ul>
