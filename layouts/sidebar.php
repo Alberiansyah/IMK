@@ -32,7 +32,7 @@
             </div>
             <div class="secondary-sidebar-menu">
                 <ul class="accordion-menu">
-                    <li>
+                    <li id="dashboard">
                         <a href="<?= $hostToRoot ?>index">
                             <i class="menu-icon icon-home4"></i><span>Dashboard</span>
                         </a>
@@ -42,15 +42,15 @@
                             <i class="icon-database icon-custom"></i><span class="">Data</span><i class="accordion-icon fas fa-angle-left"></i>
                         </a>
                         <ul class="sub-menu">
-                            <li class=""><a href="data-dokter" id="dataDokter">Data Dokter</a></li>
+                            <li class=""><a href="data-admin" id="dataAdmin">Data Admin</a></li>
                             <li class=""><a href="data-obat" id="dataObat">Data Obat</a></li>
-                            <li class=""><a href="data-dokter" id="dataResep">Data Dokter</a></li>
+                            <li class=""><a href="data-dokter" id="dataDokter">Data Dokter</a></li>
                             <li class=""><a href="data-pasien" id="dataPasien">Data Pasien</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="laporan">
                         <a href="<?= $hostToRoot ?>laporan">
-                            <i class="icon-printe icon-custom"></i><span>Laporan</span>
+                            <i class="icon-printer icon-custom"></i><span>Laporan</span>
                         </a>
                     </li>
                 </ul>

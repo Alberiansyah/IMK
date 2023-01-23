@@ -3,7 +3,7 @@
     <div class="search-form">
         <form action="#" method="GET">
             <div class="input-group">
-                <input type="text" name="search" class="form-control search-input" placeholder="Type something...">
+                <input type="text" name="search" class="form-control search-input" placeholder="Ketik sesuatu...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" id="close-search" type="button"><i class="icon-close"></i></button>
                 </span>

@@ -25,3 +25,12 @@
     -o-transition: all 0.2s;
     transition: all 0.2s;
 }
+
+.button-indent {
+    margin: 2px;
+}
+
+.swal-hapus-admin{
+    width: 550px !important;
+    height: 400px !important;
+}

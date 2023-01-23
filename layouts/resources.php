@@ -19,6 +19,7 @@
     <link href="<?= $hostToRoot ?>wp-content/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="<?= $hostToRoot ?>wp-content/assets/plugins/icomoon/style.css" rel="stylesheet">
     <link href="<?= $hostToRoot ?>wp-content/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
+    <link href="<?= $hostToRoot ?>wp-content/assets/plugins/sweetalert/css/sweetalert2.min.css" rel="stylesheet">
 
 
     <!-- Theme Styles -->
