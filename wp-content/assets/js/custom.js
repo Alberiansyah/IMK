@@ -7,26 +7,21 @@ $(document).ready(function(){
 
         if(urlFinal == 'home'){
             $("#dashboard").addClass("active-page");
-        }else if(urlFinal == 'data-admin'){    
-            $("#data").addClass("active-page");
-            $("#dataAdmin").addClass("active");
-            $("a#trigger").trigger("click");        
-        }else if(urlFinal == 'data-obat'){
-            $("#data").addClass("active-page");
-            $("#dataObat").addClass("active");
-            $("a#trigger").trigger("click");    
         }else if(urlFinal == 'data-dokter'){
-            $("#data").addClass("active-page");
-            $("#dataDokter").addClass("active");
-            $("a#trigger").trigger("click");    
+            $("#data-dokter").addClass("active-page");    
+        }else if(urlFinal == 'tambah-dokter'){
+            $("#data-dokter").addClass("active-page");    
+        }else if(urlFinal == 'data-obat'){
+            $("#data-obat").addClass("active-page");   
+        }else if(urlFinal == 'data-resep'){
+            $("#data-resep").addClass("active-page"); 
         }else if(urlFinal == 'data-pasien'){
-            $("#data").addClass("active-page");
-            $("#dataPasien").addClass("active");
-            $("a#trigger").trigger("click");    
+            $("#data-pasien").addClass("active-page");
         }else if(urlFinal == 'laporan'){
             $("#laporan").addClass("active-page");
         }
     });
+
     // Search Shortcut
     $(document).keydown(function(event) {
         if (event.ctrlKey && event.which == 13){

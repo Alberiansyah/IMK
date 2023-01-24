@@ -24,6 +24,7 @@
             <a href="<?= $hostToRoot ?>logout" data-toggle="tooltip" data-placement="right" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </div>
+    <div class="settings-overlay"></div>
     <!-- Page Content -->
     <div class="page-content">
         <div class="secondary-sidebar">
@@ -34,25 +35,41 @@
                 <ul class="accordion-menu">
                     <li id="dashboard">
                         <a href="<?= $hostToRoot ?>index">
-                            <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                            <i class="fa fa-home fa-fw"></i><span class="ml-3">Dashboard</span>
                         </a>
                     </li>
-                    <li id="data">
-                        <a href="javascript:void(0)" id="trigger">
-                            <i class="icon-database icon-custom"></i><span class="">Data</span><i class="accordion-icon fas fa-angle-left"></i>
+                    <li id="data-dokter">
+                        <a href="data-dokter" id="dataDokter">
+                            <i class="fa fa-stethoscope fa-fw"></i><span class="ml-3">Data Dokter</span>
                         </a>
-                        <ul class="sub-menu">
-                            <li class=""><a href="data-admin" id="dataAdmin">Data Admin</a></li>
-                            <li class=""><a href="data-obat" id="dataObat">Data Obat</a></li>
-                            <li class=""><a href="data-dokter" id="dataDokter">Data Dokter</a></li>
-                            <li class=""><a href="data-pasien" id="dataPasien">Data Pasien</a></li>
-                        </ul>
+                    </li>
+                    <li id="data-obat">
+                        <a href="data-obat" id="dataObat">
+                            <i class="fa fa-capsules fa-fw"></i><span class="ml-3">Data Obat</span>
+                        </a>
+                    </li>
+                    <li id="data-resep">
+                        <a href="data-resep" id="dataResep">
+                            <i class="fas fa-receipt fa-fw"></i><span class="ml-3">Data Resep</span>
+                        </a>
+                    </li>
+                    <li id="data-pasien">
+                        <a href="data-pasien" id="dataPasien">
+                            <i class="fa fa-users fa-fw"></i><span class="ml-3">Data Pasien</span>
+                        </a>
                     </li>
                     <li id="laporan">
                         <a href="<?= $hostToRoot ?>laporan">
-                            <i class="icon-printer icon-custom"></i><span>Laporan</span>
+                            <i class="fa fa-print fa-fw"></i><span class="ml-3">Laporan</span>
+                        </a>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li id="role" style="position: fixed; bottom: 0;" class="mb-3">
+                        <a href="#">
+                            <i class="fa fa-user-check fa-fw text-primary"></i><span class="ml-3 text-primary">Halo, Dokter</span>
                         </a>
                     </li>
                 </ul>
+                <h3 class="bottom-align-text ml-4 mb-4"></h3>
             </div>
         </div>

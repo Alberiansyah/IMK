@@ -34,3 +34,8 @@
     width: 550px !important;
     height: 400px !important;
 }
+
+.bottom-align-text {
+    position: fixed;
+    bottom: 0;
+  }

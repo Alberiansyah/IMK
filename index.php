@@ -35,7 +35,7 @@ if (isset($_GET['destination'])) {
                             </div>
                             <button type="submit" name="login" class="btn btn-primary">Login</button>
                         </form>
-                        <p class="m-t-sm"><a href="">Lupa Kata Sandi?</a></p>
+                        <p class="m-t-sm"><a href="">Lupa Kata Sandi?</a><br><a href="<?= $hostToRoot ?>register">Buat Akun.</a></p>
                     </div>
                     <div class="login-footer">
                         <p><?= date('Y') ?> &copy; IMK | <?= $version ?></p>
