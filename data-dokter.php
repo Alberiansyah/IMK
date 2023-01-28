@@ -3,10 +3,9 @@ require __DIR__ . '/functions/functions.php';
 require __DIR__ . '/functions/session-check.php';
 
 $idUserSesion =  $_SESSION['idUser'];
-$userSesi = tampilUserArray("SELECT * FROM tb_users WHERE idUser = ? ", [$idUserSesion]);
-$queryAdmin = tampilData("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_level.idLevel = 2 AND tb_users.idUser != $userSesi->idUser");
+$userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
+$queryDokter = tampilData("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_level.namaLevel = 'DOKTER'");
 $i = 1;
-
 ?>
 <?php require __DIR__ . '/layouts/resources.php'; ?>
 
@@ -28,13 +27,15 @@ $i = 1;
                 <h1 class="page-title ml-3">Data Dokter</h1>
             </div>
 
-            <?php if (isset($_SESSION['berhasil']) == 'Berhasil') : ?>
-                <div class="flash" data-flash="flash"></div>
-                <?php unset($_SESSION['berhasil']); ?>
-            <?php else : ?>
-                <div class="flash-failed" data-flashfailed=""></div>
-                <!-- Do nothing -->
-                <?php unset($_SESSION['berhasil']); ?>
+            <!-- Tambah Dokter -->
+            <?php if (isset($_SESSION['berhasil'])) : ?>
+                <?php if ($_SESSION['berhasil']['type'] === true) : ?>
+                    <div class="alert" data-tambah="<?= $_SESSION['berhasil']['message'] ?>"></div>
+                    <?php unset($_SESSION['berhasil']); ?>
+                <?php elseif ($_SESSION['berhasil']['type'] === false) : ?>
+                    <div class="alertGagal" data-tambah="<?= $_SESSION['berhasil']['message'] ?>"></div>
+                    <?php unset($_SESSION['berhasil']); ?>
+                <?php endif; ?>
             <?php endif; ?>
 
             <div class="row">
@@ -58,7 +59,7 @@ $i = 1;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($queryAdmin as $row) : ?>
+                                        <?php foreach ($queryDokter as $row) : ?>
                                             <tr>
                                                 <td><?= $i++ ?></td>
                                                 <td><?= $row->nama ?></td>
@@ -68,7 +69,7 @@ $i = 1;
                                                 <td><?= $row->alamat ?></td>
                                                 <td>
                                                     <button class="btn btn-info button-indent"><a href="" class="text-white"><i class="fa fa-edit"></i> Ubah</a></button>
-                                                    <button class="btn btn-danger button-indent" id="btnHapusAdmin" data-nama="<?= $row->nama ?>"><a href="<?= $hostToRoot ?>functions/hapus-admin?idUser=<?= $row->idUser ?>&&nama=<?= $row->nama ?>" id="hapusAdmin"><i class="fa fa-trash text-white"></i></a> Hapus</button>
+                                                    <button class="btn btn-danger button-indent" id="btnHapusDokter" data-nama="<?= $row->nama ?>"><a href="<?= $hostToRoot ?>functions/hapus-dokter?idUser=<?= $row->idUser ?>&&nama=<?= $row->nama ?>" id="hapusDokter"><i class="fa fa-trash text-white"></i></a> Hapus</button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

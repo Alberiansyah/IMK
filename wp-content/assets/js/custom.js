@@ -30,17 +30,17 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on("click", "#btnHapusAdmin", function(e){    
+    $(document).on("click", "#btnHapusDokter", function(e){    
         e.preventDefault()
         const nama = $(this).data("nama");
         console.log(nama)
-        const href = $(this).find("#hapusAdmin").attr('href');
+        const href = $(this).find("#hapusDokter").attr('href');
         Swal.fire({
             title: 'Apakah anda yakin menghapus pengguna ' + '<span class="text-danger">' + nama + '</span>' + '?',
             text: "Tindakan ini tidak dapat dikembalikan!",
             icon: 'warning',
             showCancelButton: true,
-            customClass: 'swal-hapus-admin',
+            customClass: 'swal-hapus-dokter',
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
             confirmButtonText: 'Hapus!',
@@ -55,20 +55,20 @@ $(document).ready(function(){
     
 });
 
-const flash = $(".flash").data("flash");
-if(flash){
+const alert = $(".alert").data("tambah");
+if(alert){
     Swal.fire(
-        'Terhapus!',
-        'Data berhasil dihapus.',
+        'Berhasil!',
+        alert,
         'success'
     )
 }
 
-const flashFailed = $(".flash-failed").data("flashfailed");
-if(flashFailed){
+const alertGagal = $(".alertGagal").data("tambah");
+if(alertGagal){
     Swal.fire(
-        'Gagal dihapus!',
-        'Data gagal dihapus.',
+        'Gagal!',
+        alertGagal,
         'error'
     )
 }

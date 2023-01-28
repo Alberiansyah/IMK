@@ -17,9 +17,9 @@ $nama = $_GET['nama'];
 $query = submitDeleteUrl("DELETE FROM tb_users WHERE idUser = ?");
 
 if ($query) {
-    $_SESSION['berhasil'] = 'Berhasil';
-    header("Location: ../data-admin");
+    $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data Berhasil dihapus'];
+    header("Location: ../data-dokter");
 } else {
-    $_SESSION['berhasil'] = 'Gagal';
-    header("Location: ../data-admin");
+    $_SESSION['berhasil'] = ['type' => false, 'message' => 'Data gagal dihapus'];
+    header("Location: ../data-dokter");
 }

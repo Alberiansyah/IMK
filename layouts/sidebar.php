@@ -66,7 +66,7 @@
                     <li class="menu-divider"></li>
                     <li id="role" style="position: fixed; bottom: 0;" class="mb-3">
                         <a href="#">
-                            <i class="fa fa-user-check fa-fw text-primary"></i><span class="ml-3 text-primary">Halo, Dokter</span>
+                            <i class="fa fa-user-check fa-fw text-primary"></i><span class="ml-3 text-primary">Halo, <?= $userSesi->namaLevel ?></span>
                         </a>
                     </li>
                 </ul>
