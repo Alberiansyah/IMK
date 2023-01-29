@@ -27,7 +27,6 @@ $i = 1;
                 <h1 class="page-title ml-3">Data Dokter</h1>
             </div>
 
-            <!-- Tambah Dokter -->
             <?php if (isset($_SESSION['berhasil'])) : ?>
                 <?php if ($_SESSION['berhasil']['type'] === true) : ?>
                     <div class="alert" data-tambah="<?= $_SESSION['berhasil']['message'] ?>"></div>
@@ -68,8 +67,8 @@ $i = 1;
                                                 <td><?= $row->noTelp ?></td>
                                                 <td><?= $row->alamat ?></td>
                                                 <td>
-                                                    <button class="btn btn-info button-indent"><a href="" class="text-white"><i class="fa fa-edit"></i> Ubah</a></button>
-                                                    <button class="btn btn-danger button-indent" id="btnHapusDokter" data-nama="<?= $row->nama ?>"><a href="<?= $hostToRoot ?>functions/hapus-dokter?idUser=<?= $row->idUser ?>&&nama=<?= $row->nama ?>" id="hapusDokter"><i class="fa fa-trash text-white"></i></a> Hapus</button>
+                                                    <a href="<?= $hostToRoot ?>edit-data-dokter?idUser=<?= $row->idUser ?>" class="text-white"><button class="btn btn-info button-indent" id="btnEditDokter"><i class="fa fa-edit"></i> Ubah</button></a>
+                                                    <a href="<?= $hostToRoot ?>functions/hapus-dokter?idUser=<?= $row->idUser ?>" id="hapusDokter"><button class="btn btn-danger button-indent" id="btnHapusDokter" data-nama="<?= $row->nama ?>"><i class="fa fa-trash text-white"></i></a> Hapus</button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

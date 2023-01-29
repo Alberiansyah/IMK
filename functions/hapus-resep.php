@@ -11,14 +11,14 @@ function submitDeleteUrl($request)
     return $query;
 }
 
-$id = $_GET['idObat'];
+$id = $_GET['idResep'];
 
-$query = submitDeleteUrl("DELETE FROM tb_obat WHERE idObat = ?");
+$query = submitDeleteUrl("DELETE FROM tb_resep WHERE idResep = ?");
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data Berhasil dihapus'];
-    header("Location: ../data-obat");
+    header("Location: ../data-resep");
 } else {
     $_SESSION['berhasil'] = ['type' => false, 'message' => 'Data gagal dihapus'];
-    header("Location: ../data-obat");
+    header("Location: ../data-resep");
 }

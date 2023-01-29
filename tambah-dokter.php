@@ -27,49 +27,20 @@ $queryLevel = tampilDataFetchOnly("SELECT * FROM tb_level WHERE namaLevel = 'DOK
                 <h1 class="page-title ml-3">Data Dokter</h1>
             </div>
 
-            <?php if (isset($_SESSION['berhasil']) == 'Berhasil') : ?>
-                <div class="flash" data-flash="flash"></div>
-                <?php unset($_SESSION['berhasil']); ?>
-            <?php else : ?>
-                <div class="flash-failed" data-flashfailed=""></div>
-                <!-- Do nothing -->
-                <?php unset($_SESSION['berhasil']); ?>
-            <?php endif; ?>
-
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="card mt-n3">
                         <div class="card-body">
-                            <form method="POST" action="<?= $hostToRoot ?>functions/tambah-dokter">
+                            <form method="POST" action="<?= $hostToRoot ?>functions/edit-obat">
                                 <div class="form-group">
-                                    <input type="hidden" name="idLevel" value="<?= $queryLevel->idLevel ?>">
-                                    <label for="nama" class="form-label"><b>Nama Dokter</b></label>
-                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Dokter ..." required>
-                                    <label for="email" class="form-label"><b>Email</b></label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email ..." required>
-                                    <label for="username" class="form-label"><b>Username</b></label>
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username ..." required>
-                                    <label for="password" class="form-label"><b>Password</b></label>
-                                    <input type="password" class="form-control" name="password" id="nama" placeholder="Masukkan Password ..." required>
-                                    <label for="password1" class="form-label"><b>Konfirmasi Password</b></label>
-                                    <input type="password" class="form-control" name="password1" id="password1" placeholder="Konfirmasi Password ..." required>
-                                    <label for="password1" class="form-label"><b>Jenis Kelamin</b></label>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" name="jk" class="custom-control-input" id="m" value="Laki-laki" required>
-                                        <label class="custom-control-label" for="m">
-                                            Laki-laki
-                                        </label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" name="jk" class="custom-control-input" id="fm" value="Perempuan" required>
-                                        <label class="custom-control-label" for="fm">
-                                            Perempuan
-                                        </label>
-                                    </div>
-                                    <label for="noTelp" class="form-label"><b>Nomer Telepon</b></label>
-                                    <input type="text" class="form-control" name="noTelp" id="noTelp" placeholder="Masukkan Nomer Telepon ..." required>
-                                    <label for="alamat" class="form-label"><b>Nomer Telepon</b></label>
-                                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat ..."></textarea>
+                                    <label for="namaObat" class="form-label"><b>Nama Obat</b></label>
+                                    <input type="text" class="form-control" name="namaObat" id="namaObat" placeholder="Masukkan Nama Obat ..." required>
+                                    <label for="stokObat" class="form-label"><b>Stok Obat</b></label>
+                                    <input type="text" class="form-control" name="stokObat" id="stokObat" placeholder="Masukkan Stok Obat ..." required>
+                                    <label for="Jenis Obat" class="form-label"><b>Jenis Obat</b></label>
+                                    <input type="text" class="form-control" name="jenisObat" id="Jenis Obat" placeholder="Masukkan Jenis Obat ..." required>
+                                    <label for="hargaObat" class="form-label"><b>Harga Obat</b></label>
+                                    <input type="number" min="1" class="form-control" name="hargaObat" id="nama" placeholder="Masukkan Harga Obat ..." required>
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
                             </form>

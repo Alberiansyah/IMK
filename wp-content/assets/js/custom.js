@@ -11,9 +11,15 @@ $(document).ready(function(){
             $("#data-dokter").addClass("active-page");    
         }else if(urlFinal == 'tambah-dokter'){
             $("#data-dokter").addClass("active-page");    
+        }else if(urlFinal == 'edit-data-dokter'){
+            $("#data-dokter").addClass("active-page");    
         }else if(urlFinal == 'data-obat'){
             $("#data-obat").addClass("active-page");   
+        }else if(urlFinal == 'tambah-obat'){
+            $("#data-obat").addClass("active-page");   
         }else if(urlFinal == 'data-resep'){
+            $("#data-resep").addClass("active-page"); 
+        }else if(urlFinal == 'tambah-resep'){
             $("#data-resep").addClass("active-page"); 
         }else if(urlFinal == 'data-pasien'){
             $("#data-pasien").addClass("active-page");
@@ -51,7 +57,53 @@ $(document).ready(function(){
             }
         });
     
-    })
+    });
+
+    $(document).on("click", "#btnHapusObat", function(e){    
+        e.preventDefault()
+        const nama = $(this).data("nama");
+        console.log(nama)
+        const href = $(this).find("#hapusObat").attr('href');
+        Swal.fire({
+            title: 'Apakah anda yakin menghapus obat ' + '<span class="text-danger">' + nama + '</span>' + '?',
+            text: "Tindakan ini tidak dapat dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            customClass: 'swal-hapus-dokter',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Hapus!',
+            cancelButtonText : 'Batalkan.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
+        });
+    
+    });
+
+    $(document).on("click", "#btnHapusResep", function(e){    
+        e.preventDefault()
+        const nama = $(this).data("nama");
+        console.log(nama)
+        const href = $(this).find("#hapusResep").attr('href');
+        Swal.fire({
+            title: 'Apakah anda yakin menghapus resep obat ' + '<span class="text-danger">' + nama + '</span>' + '?',
+            text: "Tindakan ini tidak dapat dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            customClass: 'swal-hapus-dokter',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Hapus!',
+            cancelButtonText : 'Batalkan.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
+        });
+    
+    });
     
 });
 
