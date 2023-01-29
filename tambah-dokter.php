@@ -31,7 +31,7 @@ $queryLevel = tampilDataFetchOnly("SELECT * FROM tb_level WHERE namaLevel = 'DOK
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="card mt-n3">
                         <div class="card-body">
-                            <form method="POST" action="<?= $hostToRoot ?>functions/tambah-obat">
+                            <form method="POST" action="<?= $hostToRoot ?>functions/tambah-dokter">
                                 <div class="form-group">
                                     <label for="namaObat" class="form-label"><b>Nama Obat</b></label>
                                     <input type="text" class="form-control" name="namaObat" id="namaObat" placeholder="Masukkan Nama Obat ..." required>
