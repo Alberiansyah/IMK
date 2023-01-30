@@ -53,16 +53,7 @@ $(document).ready(function(){
         }
     });
 
-    // Search Dokter
-    $(document).on('keyup', '#cariObat', function(){
-        if($('#cariObat').val() === ''){
-            $("#search").load(location.href+" #search>*","");
-        }else{
-            $('#search').load('functions/cari-obat?keyword=' + encodeURIComponent($('#cariObat').val()));
-        }
-    });
-
-    // Search Dokter
+    // Search Pasien
     $(document).on('keyup', '#cariPasien', function(){
         if($('#cariPasien').val() === ''){
             $("#search").load(location.href+" #search>*","");
@@ -71,7 +62,25 @@ $(document).ready(function(){
         }
     });
 
-    // Search Dokter
+    // Search Pasien Transaksi
+    $(document).on('keyup', '#cariPasienTransaksi', function(){
+        if($('#cariPasienTransaksi').val() === ''){
+            $("#searchPasienTransaksi").load(location.href+" #searchPasienTransaksi>*","");
+        }else{
+            $('#searchPasienTransaksi').load('functions/cari-pasien?keyword=' + encodeURIComponent($('#cariPasienTransaksi').val()));
+        }
+    });
+
+    // Search Obat
+    $(document).on('keyup', '#cariObat', function(){
+        if($('#cariObat').val() === ''){
+            $("#search").load(location.href+" #search>*","");
+        }else{
+            $('#search').load('functions/cari-obat?keyword=' + encodeURIComponent($('#cariObat').val()));
+        }
+    });
+
+    // Search Resep
     $(document).on('keyup', '#cariResep', function(){
         if($('#cariResep').val() === ''){
             $("#search").load(location.href+" #search>*","");

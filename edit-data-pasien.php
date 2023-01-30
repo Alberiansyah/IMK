@@ -25,7 +25,7 @@ $tampilEditPasien = tampilDataFetchOnly("SELECT * FROM tb_users WHERE idUser = '
                         <li class="breadcrumb-item active" aria-current="page">Edit Pasien</li>
                     </ol>
                 </nav>
-                <h1 class="page-title"></h1>
+                <h1 class="page-title ml-3">Edit Pasien</h1>
             </div>
         </div><!-- Main Wrapper -->
 
@@ -40,10 +40,6 @@ $tampilEditPasien = tampilDataFetchOnly("SELECT * FROM tb_users WHERE idUser = '
                                 <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pasien ..." value="<?= $tampilEditPasien->nama ?>" required>
                                 <label for="email" class="form-label"><b>Email</b></label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email ..." value="<?= $tampilEditPasien->email ?>" required>
-                                <label for="password" class="form-label"><b>Password</b></label>
-                                <input type="password" class="form-control" name="password" id="nama" placeholder="Masukkan Password ..." required>
-                                <label for="password1" class="form-label"><b>Konfirmasi Password</b></label>
-                                <input type="password" class="form-control" name="password1" id="password1" placeholder="Konfirmasi Password ..." required>
                                 <label for="noTelp" class="form-label"><b>Nomer Telepon</b></label>
                                 <input type="text" class="form-control" name="noTelp" id="noTelp" placeholder="Masukkan Nomer Telepon ..." value="<?= $tampilEditPasien->noTelp ?>" required>
                                 <label for="alamat" class="form-label"><b>Alamat</b></label>

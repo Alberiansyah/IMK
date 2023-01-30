@@ -22,7 +22,7 @@ $karakter = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.';
 $userIdRandom = randomUserId($karakter, 5);
 
 // Cek apakah ada data di dalam database
-$query = $pdo->prepare("SELECT max(idUser)as id from tb_users");
+$query = $pdo->prepare("SELECT max(idTransaksi)as id from tb_transaksi");
 $query->execute();
 $hasilId = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -31,21 +31,21 @@ if ($hasilId['id'] == null) {
 } else {
 
     // Cek ke database jika terdapat ID yang sama
-    $query = $pdo->prepare("SELECT * FROM tb_users WHERE idUser = ? ");
+    $query = $pdo->prepare("SELECT * FROM tb_transaksi WHERE idTransaksi = ? ");
     $query->execute([$userIdRandom]);
     $cekRow = $query->rowCount();
 
     if ($cekRow > 0) {
         // Ulangi sekali lagi untuk mencari ke database jika terdapat ID yang sama.
         $userIdRandom2 = randomUserId($karakter, 5);
-        $query = $pdo->prepare("SELECT * FROM tb_users WHERE idUser = ? ");
+        $query = $pdo->prepare("SELECT * FROM tb_transaksi WHERE idTransaksi = ? ");
         $query->execute([$userIdRandom2]);
         $cekRow2 = $query->rowCount();
 
         if ($cekRow2 > 0) {
             // Jika tetap terdapat ID yang sama maka akan menghasilkan kode baru + 1 karakter baru.
             // Cari row paling terakhir dalam database (Mungkin masih kurang efektif, perlu perbaikan di masa berikutnya.)   
-            $query = $pdo->prepare("SELECT * FROM tb_users ORDER BY tanggalDibuat DESC LIMIT 1");
+            $query = $pdo->prepare("SELECT * FROM tb_transaksi ORDER BY tanggalDibuat DESC LIMIT 1");
             $query->execute();
             $hasilRow = $query->fetchColumn(0);
             $hitungKarakter = strlen($hasilRow);
@@ -55,7 +55,7 @@ if ($hasilId['id'] == null) {
         }
     } else {
         // Cari row paling terakhir dalam database (Mungkin masih kurang efektif, perlu perbaikan di masa berikutnya.)
-        $query = $pdo->prepare("SELECT * FROM tb_users ORDER BY tanggalDibuat DESC LIMIT 1");
+        $query = $pdo->prepare("SELECT * FROM tb_transaksi ORDER BY tanggalDibuat DESC LIMIT 1");
         $query->execute();
         $hasilRow = $query->fetchColumn(0);
         $hitungKarakter = strlen($hasilRow);
@@ -67,30 +67,43 @@ if ($hasilId['id'] == null) {
 // Akhir dari Karakter Acak
 
 $idLevel  = htmlspecialchars($_POST['idLevel']);
+$username = htmlspecialchars($_POST['username']);
+$password = htmlspecialchars($_POST['password']);
+$password1 = htmlspecialchars($_POST['password1']);
 $nama = htmlspecialchars($_POST['nama']);
 $email = htmlspecialchars($_POST['email']);
 $jk = htmlspecialchars($_POST['jk']);
 $noTelp = htmlspecialchars($_POST['noTelp']);
 $alamat = htmlspecialchars($_POST['alamat']);
 
+// Cek Password
+if ($password != $password1) {
+    $_SESSION['berhasil'] = ['type' => false, 'message' => 'Gagal menambahkan, konfirmasi password tidak sama'];
+    header('Location: ../data-dokter');
+    exit();
+}
+
 // Cek username & email
-$query = $pdo->prepare("SELECT * FROM tb_users WHERE email = ? OR username = ? ");
+$query = $pdo->prepare("SELECT * FROM tb_transaksi WHERE email = ? OR username = ? ");
 $query->execute([$email, $username]);
 $cekEmailUsername = $query->rowCount();
 
 if ($cekEmailUsername > 0) {
     $_SESSION['berhasil'] = ['type' => false, 'message' => 'Gagal menambahkan, Username/Email telah digunakan'];
-    header('Location: ../data-pasien');
+    header('Location: ../data-dokter');
     exit();
 }
 
-$query = $pdo->prepare("INSERT INTO tb_users (idUser, idLevel, username, password, nama, email, jk, noTelp, alamat, tanggalDibuat, tanggalDiubah) VALUE( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$query->execute([$id, $idLevel, null, null, $nama, $email, $jk, $noTelp, $alamat, null, null]);
+// Encrypt Password
+$passwordEncrypt = password_hash($password, PASSWORD_DEFAULT);
+
+$query = $pdo->prepare("INSERT INTO tb_transaksi (idTransaksi, idLevel, username, password, nama, email, jk, noTelp, alamat, tanggalDibuat, tanggalDiubah) VALUE( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$query->execute([$id, $idLevel, $username, $passwordEncrypt, $nama, $email, $jk, $noTelp, $alamat, null, null]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];
-    header('Location: ../data-pasien');
+    header('Location: ../data-dokter');
 } else {
     $_SESSION['berhasil'] = ['type' => false, 'message' => 'Data Gagal Ditambahkan'];
-    header('Location: ../data-pasien');
+    header('Location: ../data-dokter');
 }

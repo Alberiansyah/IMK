@@ -25,7 +25,7 @@ $tampilEditResep = tampilDataFetchOnly("SELECT * FROM tb_resep INNER JOIN tb_oba
                         <li class="breadcrumb-item active" aria-current="page">Edit Resep</li>
                     </ol>
                 </nav>
-                <h1 class="page-title"></h1>
+                <h1 class="page-title ml-3">Edit Resep</h1>
             </div>
         </div><!-- Main Wrapper -->
 

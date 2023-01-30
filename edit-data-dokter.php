@@ -25,7 +25,7 @@ $tampilEditDokter = tampilDataFetchOnly("SELECT * FROM tb_users WHERE idUser = '
                         <li class="breadcrumb-item active" aria-current="page">Edit Dokter</li>
                     </ol>
                 </nav>
-                <h1 class="page-title"></h1>
+                <h1 class="page-title ml-3">Edit Dokter</h1>
             </div>
         </div><!-- Main Wrapper -->
 

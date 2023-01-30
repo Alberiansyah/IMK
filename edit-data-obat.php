@@ -21,11 +21,11 @@ $tampilEditObat = tampilDataFetchOnly("SELECT * FROM tb_obat WHERE idObat = '$id
             <div class="content-header">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-separator-1">
-                        <li class="breadcrumb-item" aria-current="page"><a href="<?= $hostToRoot ?>data-dokter">Data Dokter</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Dokter</li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="<?= $hostToRoot ?>data-obat">Data Obat</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Obat</li>
                     </ol>
                 </nav>
-                <h1 class="page-title"></h1>
+                <h1 class="page-title ml-3">Edit Obat</h1>
             </div>
         </div><!-- Main Wrapper -->
 

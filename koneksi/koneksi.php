@@ -13,6 +13,6 @@ try {
 
 $hostToRoot = 'http://localhost/UNIKOM/IMK/';
 $title = 'IMK | Klinik';
-$version = 'Beta Build 1.6';
+$version = 'Beta Build 1.7';
 
 session_start();
