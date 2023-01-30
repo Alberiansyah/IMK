@@ -17,11 +17,19 @@ $(document).ready(function(){
             $("#data-obat").addClass("active-page");   
         }else if(urlFinal == 'tambah-obat'){
             $("#data-obat").addClass("active-page");   
+        }else if(urlFinal == 'edit-data-obat'){
+            $("#data-obat").addClass("active-page");   
         }else if(urlFinal == 'data-resep'){
             $("#data-resep").addClass("active-page"); 
         }else if(urlFinal == 'tambah-resep'){
             $("#data-resep").addClass("active-page"); 
+        }else if(urlFinal == 'edit-data-resep'){
+            $("#data-resep").addClass("active-page"); 
         }else if(urlFinal == 'data-pasien'){
+            $("#data-pasien").addClass("active-page");
+        }else if(urlFinal == 'tambah-pasien'){
+            $("#data-pasien").addClass("active-page");
+        }else if(urlFinal == 'edit-data-pasien'){
             $("#data-pasien").addClass("active-page");
         }else if(urlFinal == 'laporan'){
             $("#laporan").addClass("active-page");
@@ -33,6 +41,42 @@ $(document).ready(function(){
         if (event.ctrlKey && event.which == 13){
             $("a#search-button").trigger("click"); 
             event.preventDefault();
+        }
+    });
+
+    // Search Dokter
+    $(document).on('keyup', '#cariDokter', function(){
+        if($('#cariDokter').val() === ''){
+            $("#search").load(location.href+" #search>*","");
+        }else{
+            $('#search').load('functions/cari-dokter?keyword=' + encodeURIComponent($('#cariDokter').val()));
+        }
+    });
+
+    // Search Dokter
+    $(document).on('keyup', '#cariObat', function(){
+        if($('#cariObat').val() === ''){
+            $("#search").load(location.href+" #search>*","");
+        }else{
+            $('#search').load('functions/cari-obat?keyword=' + encodeURIComponent($('#cariObat').val()));
+        }
+    });
+
+    // Search Dokter
+    $(document).on('keyup', '#cariPasien', function(){
+        if($('#cariPasien').val() === ''){
+            $("#search").load(location.href+" #search>*","");
+        }else{
+            $('#search').load('functions/cari-pasien?keyword=' + encodeURIComponent($('#cariPasien').val()));
+        }
+    });
+
+    // Search Dokter
+    $(document).on('keyup', '#cariResep', function(){
+        if($('#cariResep').val() === ''){
+            $("#search").load(location.href+" #search>*","");
+        }else{
+            $('#search').load('functions/cari-resep?keyword=' + encodeURIComponent($('#cariResep').val()));
         }
     });
 
@@ -49,8 +93,8 @@ $(document).ready(function(){
             customClass: 'swal-hapus-dokter',
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Hapus!',
-            cancelButtonText : 'Batalkan.'
+            confirmButtonText: '<i class="fa fa-trash"></i> Hapus!',
+            cancelButtonText : '<i class="fa fa-window-close"></i> Batalkan.'
         }).then((result) => {
             if (result.isConfirmed) {
                 document.location.href = href;
@@ -72,8 +116,8 @@ $(document).ready(function(){
             customClass: 'swal-hapus-dokter',
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Hapus!',
-            cancelButtonText : 'Batalkan.'
+            confirmButtonText: '<i class="fa fa-trash"></i> Hapus!',
+            cancelButtonText : '<i class="fa fa-window-close"></i> Batalkan.'
         }).then((result) => {
             if (result.isConfirmed) {
                 document.location.href = href;
@@ -95,8 +139,31 @@ $(document).ready(function(){
             customClass: 'swal-hapus-dokter',
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Hapus!',
-            cancelButtonText : 'Batalkan.'
+            confirmButtonText: '<i class="fa fa-trash"></i> Hapus!',
+            cancelButtonText : '<i class="fa fa-window-close"></i> Batalkan.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
+        });
+    
+    });
+
+    $(document).on("click", "#btnHapusPasien", function(e){    
+        e.preventDefault()
+        const nama = $(this).data("nama");
+        console.log(nama)
+        const href = $(this).find("#hapusPasien").attr('href');
+        Swal.fire({
+            title: 'Apakah anda yakin menghapus pengguna ' + '<span class="text-danger">' + nama + '</span>' + '?',
+            text: "Tindakan ini tidak dapat dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            customClass: 'swal-hapus-dokter',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: '<i class="fa fa-trash"></i> Hapus!',
+            cancelButtonText : '<i class="fa fa-window-close"></i> Batalkan.'
         }).then((result) => {
             if (result.isConfirmed) {
                 document.location.href = href;

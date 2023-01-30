@@ -29,13 +29,8 @@ if (isset($_GET['destination'])) {
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Kata Sandi ..." required>
                             </div>
-                            <div class="custom-control custom-checkbox form-group">
-                                <input type="checkbox" class="custom-control-input" id="ingat">
-                                <label class="custom-control-label" for="ingat">Ingat saya</label>
-                            </div>
                             <button type="submit" name="login" class="btn btn-primary">Login</button>
                         </form>
-                        <p class="m-t-sm"><a href="">Lupa Kata Sandi?</a><br><a href="<?= $hostToRoot ?>register">Buat Akun.</a></p>
                     </div>
                     <div class="login-footer">
                         <p><?= date('Y') ?> &copy; IMK | <?= $version ?></p>

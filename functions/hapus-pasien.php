@@ -17,8 +17,8 @@ $query = submitDeleteUrl("DELETE FROM tb_users WHERE idUser = ?");
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data Berhasil dihapus'];
-    header("Location: ../data-dokter");
+    header("Location: ../data-pasien");
 } else {
     $_SESSION['berhasil'] = ['type' => false, 'message' => 'Data gagal dihapus'];
-    header("Location: ../data-dokter");
+    header("Location: ../data-pasien");
 }
