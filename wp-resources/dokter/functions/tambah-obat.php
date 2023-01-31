@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__ . '/../../../koneksi/koneksi.php';
 
 function randomUserId($id, $kekuatan = 20)
@@ -21,7 +22,7 @@ $karakter = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.';
 $userIdRandom = randomUserId($karakter, 5);
 
 // Cek apakah ada data di dalam database
-$query = $pdo->prepare("SELECT max(idDiagnosa)as id from tb_diagnosa");
+$query = $pdo->prepare("SELECT max(idObat)as id from tb_obat");
 $query->execute();
 $hasilId = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -30,21 +31,21 @@ if ($hasilId['id'] == null) {
 } else {
 
     // Cek ke database jika terdapat ID yang sama
-    $query = $pdo->prepare("SELECT * FROM tb_diagnosa WHERE idDiagnosa = ? ");
+    $query = $pdo->prepare("SELECT * FROM tb_obat WHERE idObat = ? ");
     $query->execute([$userIdRandom]);
     $cekRow = $query->rowCount();
 
     if ($cekRow > 0) {
         // Ulangi sekali lagi untuk mencari ke database jika terdapat ID yang sama.
         $userIdRandom2 = randomUserId($karakter, 5);
-        $query = $pdo->prepare("SELECT * FROM tb_diagnosa WHERE idDiagnosa = ? ");
+        $query = $pdo->prepare("SELECT * FROM tb_obat WHERE idObat = ? ");
         $query->execute([$userIdRandom2]);
         $cekRow2 = $query->rowCount();
 
         if ($cekRow2 > 0) {
             // Jika tetap terdapat ID yang sama maka akan menghasilkan kode baru + 1 karakter baru.
             // Cari row paling terakhir dalam database (Mungkin masih kurang efektif, perlu perbaikan di masa berikutnya.)   
-            $query = $pdo->prepare("SELECT * FROM tb_diagnosa ORDER BY tanggalDibuat DESC LIMIT 1");
+            $query = $pdo->prepare("SELECT * FROM tb_obat ORDER BY tanggalDibuat DESC LIMIT 1");
             $query->execute();
             $hasilRow = $query->fetchColumn(0);
             $hitungKarakter = strlen($hasilRow);
@@ -54,7 +55,7 @@ if ($hasilId['id'] == null) {
         }
     } else {
         // Cari row paling terakhir dalam database (Mungkin masih kurang efektif, perlu perbaikan di masa berikutnya.)
-        $query = $pdo->prepare("SELECT * FROM tb_diagnosa ORDER BY tanggalDibuat DESC LIMIT 1");
+        $query = $pdo->prepare("SELECT * FROM tb_obat ORDER BY tanggalDibuat DESC LIMIT 1");
         $query->execute();
         $hasilRow = $query->fetchColumn(0);
         $hitungKarakter = strlen($hasilRow);
@@ -65,18 +66,18 @@ if ($hasilId['id'] == null) {
 }
 // Akhir dari Karakter Acak
 
-$idDokter = htmlspecialchars($_POST['idDokter']);
-$idPasien = htmlspecialchars($_POST['idPasien']);
-$tglDiagnosa = htmlspecialchars($_POST['tglDiagnosa']);
-$keluhan = htmlspecialchars($_POST['keluhan']);
+$namaObat  = htmlspecialchars($_POST['namaObat']);
+$stokObat = htmlspecialchars($_POST['stokObat']);
+$jenisObat = htmlspecialchars($_POST['jenisObat']);
+$hargaObat = htmlspecialchars($_POST['hargaObat']);
 
-$query = $pdo->prepare("INSERT INTO tb_diagnosa (idDiagnosa, idDokter, idPasien, tglDiagnosa, keluhan, keterangan, tanggalDibuat, tanggalDiubah) VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
-$query->execute([$id, $idDokter, $idPasien, $tglDiagnosa, $keluhan, 'BELUM SELESAI', null, null]);
+$query = $pdo->prepare("INSERT INTO tb_obat (idObat, namaObat, stokObat, jenisObat, hargaObat, tanggalDibuat, tanggalDiubah) VALUE(?, ?, ?, ?, ?, ?, ?)");
+$query->execute([$id, $namaObat, $stokObat, $jenisObat, $hargaObat, null, null]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];
-    header('Location: ../data-pasien');
+    header('Location: ../data-obat');
 } else {
     $_SESSION['berhasil'] = ['type' => false, 'message' => 'Data Gagal Ditambahkan'];
-    header('Location: ../data-pasien');
+    header('Location: ../data-obat');
 }

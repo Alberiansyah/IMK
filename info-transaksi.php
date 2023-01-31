@@ -9,7 +9,7 @@ $idDiagnosa = $_GET['idDiagnosa'];
 
 $tampilSemuaInfoHeader = tampilDataFetchOnly("SELECT * FROM tb_diagnosa INNER JOIN tb_transaksi ON tb_transaksi.idDiagnosa = tb_diagnosa.idDiagnosa INNER JOIN tb_obat ON tb_obat.idObat = tb_transaksi.idObat INNER JOIN tb_users ON tb_users.idUser = tb_diagnosa.idPasien");
 
-$tampilSemuaInfo = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_transaksi ON tb_transaksi.idDiagnosa = tb_diagnosa.idDiagnosa INNER JOIN tb_obat ON tb_obat.idObat = tb_transaksi.idObat INNER JOIN tb_users ON tb_users.idUser = tb_diagnosa.idPasien");
+$tampilSemuaInfo = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_transaksi ON tb_transaksi.idDiagnosa = tb_diagnosa.idDiagnosa INNER JOIN tb_obat ON tb_obat.idObat = tb_transaksi.idObat INNER JOIN tb_users ON tb_users.idUser = tb_diagnosa.idPasien WHERE tb_diagnosa.idDiagnosa = '$idDiagnosa'");
 
 $tampilTotal = tampilDataFetchOnly("SELECT SUM(hargaObat) as total FROM tb_transaksi WHERE idDiagnosa = '$idDiagnosa'");
 

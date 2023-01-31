@@ -34,22 +34,22 @@
             <div class="secondary-sidebar-menu">
                 <ul class="accordion-menu">
                     <li id="dashboard">
-                        <a href="<?= $hostToRoot ?>index">
+                        <a href="<?= $hostToResources ?>dokter/home">
                             <i class="fa fa-home fa-fw"></i><span class="ml-3">Dashboard</span>
                         </a>
                     </li>
-                    <li id="data-dokter">
-                        <a href="data-dokter" id="dataDokter">
-                            <i class="fa fa-stethoscope fa-fw"></i><span class="ml-3">Data Dokter</span>
+                    <li id="data-obat">
+                        <a href="<?= $hostToResources ?>dokter/data-obat" id="dataObat">
+                            <i class="fa fa-capsules fa-fw"></i><span class="ml-3">Data Obat</span>
                         </a>
                     </li>
                     <li id="data-resep">
-                        <a href="data-resep" id="dataResep">
+                        <a href="<?= $hostToResources ?>dokter/data-resep" id="dataResep">
                             <i class="fas fa-receipt fa-fw"></i><span class="ml-3">Data Resep</span>
                         </a>
                     </li>
                     <li id="data-pasien">
-                        <a href="data-pasien" id="dataPasien">
+                        <a href="<?= $hostToResources ?>dokter/data-pasien" id="dataPasien">
                             <i class="fa fa-users fa-fw"></i><span class="ml-3">Data Pasien</span>
                         </a>
                     </li>

@@ -33,6 +33,12 @@ $(document).ready(function(){
             $("#data-pasien").addClass("active-page");
         }else if(urlFinal == 'laporan'){
             $("#laporan").addClass("active-page");
+        }else if(urlFinal == 'tambah-transaksi'){
+            $("#laporan").addClass("active-page");
+        }else if(urlFinal == 'info-transaksi'){
+            $("#laporan").addClass("active-page");
+        }else if(urlFinal == 'tambah-diagnosa'){
+            $("#data-pasien").addClass("active-page");
         }
     });
 

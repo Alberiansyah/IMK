@@ -45,7 +45,7 @@ $queryTransaksi = tampilDataFetchOnly("SELECT * FROM tb_users INNER JOIN tb_diag
                             <form method="POST" action="<?= $hostToRoot ?>functions/tambah-transaksi">
                                 <div class="form-group">
                                     <input type="hidden" name="idDiagnosa" value="<?= $queryTransaksi->idDiagnosa ?>">
-                                    <input type="" name="idDokter" value="<?= $queryTransaksi->idDokter ?>">
+                                    <input type="hidden" name="idDokter" value="<?= $queryTransaksi->idDokter ?>">
                                     <input type="hidden" name="idPasien" value="<?= $queryTransaksi->idPasien ?>">
                                     <h3 class="text-center">Transaksi baru atas nama <span class="text-primary"><?= $queryPasien->nama ?></span></h3>
                                     <label for="tanggalDiagnosa" class="form-label"><b>Tanggal Diagnosa</b></label>
