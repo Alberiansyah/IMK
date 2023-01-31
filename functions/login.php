@@ -21,6 +21,10 @@ if ($checkRow === 1) {
             unset($_SESSION['destination']);
             exit();
         } else {
+            if ($queryAssoc->idLevel = '9lKih') {
+                header('Location: ../wp-resources/dokter/home');
+                exit();
+            }
             header('Location: ../home');
             exit();
         }
