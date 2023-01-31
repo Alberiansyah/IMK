@@ -16,6 +16,8 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?= $hostToRoot ?>wp-content/assets/js/concept.min.js"></script>
 <script src="<?= $hostToRoot ?>wp-content/assets/js/custom.js?v=<?= time() ?>"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 </body>
 
 </html>

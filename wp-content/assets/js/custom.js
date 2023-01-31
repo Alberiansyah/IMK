@@ -180,7 +180,27 @@ $(document).ready(function(){
         });
     
     });
+
+    $(document).on("click", "#dataObatList", function(e){    
+        const idObat = $(this).data("idobat")
+        const namaObat = $(this).data("namaobat")
+        const hargaObar = $(this).data("hargaobat")
+
+        $(".obatTerpilih").append(`
+            <input type="hidden" name="idObat[]" value="`+idObat+`" class="form-control">
+            <input type="hidden" name="hargaObat[]" value="`+hargaObar+`" class="form-control">
+            <span style="font-size:15px; background-color:#000;" class="text-white">`+namaObat+`<span>,
+        `);
+    });
     
+});
+
+
+// $("#dataObatList").click(function(){
+// });
+
+$("#resetObat").click(function(){
+    $(".obatTerpilih").load(location.href+" .obatTerpilih>*","");
 });
 
 const alert = $(".alert").data("tambah");

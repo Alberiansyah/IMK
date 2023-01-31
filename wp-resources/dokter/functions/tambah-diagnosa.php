@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../koneksi/koneksi.php';
+require __DIR__ . '/../../../koneksi/koneksi.php';
 
 function randomUserId($id, $kekuatan = 20)
 {
@@ -22,7 +22,7 @@ $karakter = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.';
 $userIdRandom = randomUserId($karakter, 5);
 
 // Cek apakah ada data di dalam database
-$query = $pdo->prepare("SELECT max(idTransaksi)as id from tb_transaksi");
+$query = $pdo->prepare("SELECT max(idDiagnosa)as id from tb_diagnosa");
 $query->execute();
 $hasilId = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -31,21 +31,21 @@ if ($hasilId['id'] == null) {
 } else {
 
     // Cek ke database jika terdapat ID yang sama
-    $query = $pdo->prepare("SELECT * FROM tb_transaksi WHERE idTransaksi = ? ");
+    $query = $pdo->prepare("SELECT * FROM tb_diagnosa WHERE idDiagnosa = ? ");
     $query->execute([$userIdRandom]);
     $cekRow = $query->rowCount();
 
     if ($cekRow > 0) {
         // Ulangi sekali lagi untuk mencari ke database jika terdapat ID yang sama.
         $userIdRandom2 = randomUserId($karakter, 5);
-        $query = $pdo->prepare("SELECT * FROM tb_transaksi WHERE idTransaksi = ? ");
+        $query = $pdo->prepare("SELECT * FROM tb_diagnosa WHERE idDiagnosa = ? ");
         $query->execute([$userIdRandom2]);
         $cekRow2 = $query->rowCount();
 
         if ($cekRow2 > 0) {
             // Jika tetap terdapat ID yang sama maka akan menghasilkan kode baru + 1 karakter baru.
             // Cari row paling terakhir dalam database (Mungkin masih kurang efektif, perlu perbaikan di masa berikutnya.)   
-            $query = $pdo->prepare("SELECT * FROM tb_transaksi ORDER BY tanggalDibuat DESC LIMIT 1");
+            $query = $pdo->prepare("SELECT * FROM tb_diagnosa ORDER BY tanggalDibuat DESC LIMIT 1");
             $query->execute();
             $hasilRow = $query->fetchColumn(0);
             $hitungKarakter = strlen($hasilRow);
@@ -55,7 +55,7 @@ if ($hasilId['id'] == null) {
         }
     } else {
         // Cari row paling terakhir dalam database (Mungkin masih kurang efektif, perlu perbaikan di masa berikutnya.)
-        $query = $pdo->prepare("SELECT * FROM tb_transaksi ORDER BY tanggalDibuat DESC LIMIT 1");
+        $query = $pdo->prepare("SELECT * FROM tb_diagnosa ORDER BY tanggalDibuat DESC LIMIT 1");
         $query->execute();
         $hasilRow = $query->fetchColumn(0);
         $hitungKarakter = strlen($hasilRow);
@@ -66,32 +66,18 @@ if ($hasilId['id'] == null) {
 }
 // Akhir dari Karakter Acak
 
+$idDokter = htmlspecialchars($_POST['idDokter']);
+$idPasien = htmlspecialchars($_POST['idPasien']);
+$tglDiagnosa = htmlspecialchars($_POST['tglDiagnosa']);
+$keluhan = htmlspecialchars($_POST['keluhan']);
 
-$idObat2 = count($_POST['idObat']);
-$idDiagnosa = htmlspecialchars($_POST['idDiagnosa']);
-$keterangan = "SELESAI";
-for ($i = 0; $i < $idObat2; $i++) {
-    $idDokter  = htmlspecialchars($_POST['idDokter']);
-    $idPasien = htmlspecialchars($_POST['idPasien']);
-    $idObat = htmlspecialchars($_POST['idObat'][$i]);
-    $tanggalTransaksi = htmlspecialchars($_POST['tanggalTransaksi']);
-    $hargaObat = htmlspecialchars($_POST['hargaObat'][$i]);
-
-    $query = $pdo->prepare("INSERT INTO tb_transaksi (idTransaksi, idDiagnosa, idDokter, idPasien, idObat, tanggalTransaksi, hargaObat, tanggalDibuat, tanggalDiubah) VALUE( ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $query->execute([null, $idDiagnosa, $idDokter, $idPasien, $idObat, $tanggalTransaksi, $hargaObat, null, null]);
-}
+$query = $pdo->prepare("INSERT INTO tb_diagnosa (idDiagnosa, idDokter, idPasien, tglDiagnosa, keluhan, keterangan, tanggalDibuat, tanggalDiubah) VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
+$query->execute([$id, $idDokter, $idPasien, $tglDiagnosa, $keluhan, 'BELUM SELESAI', null, null]);
 
 if ($query) {
-
-    $queryDiagnosa = $pdo->prepare("UPDATE tb_diagnosa SET
-                                            keterangan = ?
-                                            WHERE idDiagnosa = ?
-                            ");
-    $queryDiagnosa->execute([$keterangan, $idDiagnosa]);
-
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];
-    header('Location: ../laporan');
+    header('Location: ../data-pasien');
 } else {
     $_SESSION['berhasil'] = ['type' => false, 'message' => 'Data Gagal Ditambahkan'];
-    header('Location: ../laporan');
+    header('Location: ../data-pasien');
 }

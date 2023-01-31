@@ -4,11 +4,12 @@ require __DIR__ . '/functions/session-check.php';
 
 $idUserSesion =  $_SESSION['idUser'];
 $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
-$queryPasien = tampilData("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_level.namaLevel = 'PASIEN' LIMIT 10");
-$queryTransaksi = tampilData("SELECT * FROM tb_transaksi INNER JOIN tb_users ON tb_users.idUser = tb_transaksi.idPasien INNER JOIN tb_obat ON tb_obat.idObat = tb_transaksi.idObat LIMIT 10");
-$countDataPasien = count($queryPasien);
-$countDataTransaksi = count($queryTransaksi);
-$i = 1;
+$queryDiagnosaBelumSelesai = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_users ON tb_users.idUser = tb_diagnosa.idPasien WHERE tb_diagnosa.keterangan = 'BELUM SELESAI'");
+$queryDiagnosaSelesai = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_users ON tb_users.idUser = tb_diagnosa.idPasien WHERE tb_diagnosa.keterangan = 'SELESAI'");
+$countDataDiagnosaBelumSelesai = count($queryDiagnosaBelumSelesai);
+$countDataDiagnosaSelesai = count($queryDiagnosaSelesai);
+$no1 = 1;
+$no2 = 1;
 ?>
 <?php require __DIR__ . '/layouts/resources.php'; ?>
 
@@ -27,7 +28,7 @@ $i = 1;
                         <li class="breadcrumb-item active" aria-current="page">Data Transaksi</li>
                     </ol>
                 </nav>
-                <h1 class="page-title ml-3">Data Transaksi</h1>
+                <h1 class="page-title ml-3">Data Diagnosa</h1>
             </div>
 
             <?php if (isset($_SESSION['berhasil'])) : ?>
@@ -46,7 +47,7 @@ $i = 1;
                         <div class="card-body">
                             <div class="float-right">
                             </div>
-                            <h5 class="card-title">Pencarian Pasien</h5>
+                            <h5 class="card-title">Pencarian Diagnosa</h5>
                             <div class="row justify-content-center">
                                 <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
                                     <div class="form-group">
@@ -75,27 +76,29 @@ $i = 1;
                                                     <th>Nama</th>
                                                     <th>Email</th>
                                                     <th>Jenis Kelamin</th>
-                                                    <th>No Telepon</th>
-                                                    <th>Alamat</th>
+                                                    <th>Tanggal Diagnos</th>
+                                                    <th>Keluhan</th>
+                                                    <th>Keterangan</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if ($countDataPasien < 1) : ?>
+                                                <?php if ($countDataDiagnosaBelumSelesai < 1) : ?>
                                                     <tr>
-                                                        <td colspan="8" style="text-align: center;">Tidak terdapat data pasien, silahkan tambah terlebih dahulu.</td>
+                                                        <td colspan="8" style="text-align: center;">Tidak terdapat data diagnosa, silahkan tambah terlebih dahulu.</td>
                                                     </tr>
                                                 <?php else : ?>
-                                                    <?php foreach ($queryPasien as $row) : ?>
+                                                    <?php foreach ($queryDiagnosaBelumSelesai as $row) : ?>
                                                         <tr>
-                                                            <td><?= $i++ ?></td>
+                                                            <td><?= $no1++ ?></td>
                                                             <td><?= $row->nama ?></td>
                                                             <td><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></td>
                                                             <td><?= $row->jk ?></td>
-                                                            <td><?= $row->noTelp ?></td>
-                                                            <td><?= $row->alamat ?></td>
+                                                            <td><?= $row->tglDiagnosa ?></td>
+                                                            <td><?= $row->keluhan ?></td>
+                                                            <td><?= $row->keterangan ?></td>
                                                             <td>
-                                                                <a href="<?= $hostToRoot ?>tambah-transaksi"><button class="btn btn-primary button-indent"><i class="fa fa-plus fa-fw"></i> Transaksi Baru</button></a>
+                                                                <a href="<?= $hostToRoot ?>tambah-transaksi?idPasien=<?= $row->idUser ?>&&idDiagnosa=<?= $row->idDiagnosa ?>"><button class="btn btn-primary button-indent"><i class="fa fa-plus fa-fw"></i> Transaksi Baru</button></a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -108,6 +111,9 @@ $i = 1;
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="content-header">
+                <h1 class="page-title ml-3">Data Transaksi</h1>
             </div>
 
             <div class="row">
@@ -145,28 +151,29 @@ $i = 1;
                                                     <th>Nama</th>
                                                     <th>Email</th>
                                                     <th>Jenis Kelamin</th>
-                                                    <th>No Telepon</th>
-                                                    <th>Alamat</th>
+                                                    <th>Tanggal Diagnosa</th>
+                                                    <th>Keluhan</th>
+                                                    <th>Keterangan</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if ($countDataTransaksi < 1) : ?>
+                                                <?php if ($countDataDiagnosaSelesai < 1) : ?>
                                                     <tr>
                                                         <td colspan="8" style="text-align: center;">Tidak terdapat data transaksi, silahkan tambah terlebih dahulu.</td>
                                                     </tr>
                                                 <?php else : ?>
-                                                    <?php foreach ($queryTransaksi as $row) : ?>
+                                                    <?php foreach ($queryDiagnosaSelesai as $row) : ?>
                                                         <tr>
-                                                            <td><?= $i++ ?></td>
+                                                            <td><?= $no2++ ?></td>
                                                             <td><?= $row->nama ?></td>
                                                             <td><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></td>
                                                             <td><?= $row->jk ?></td>
-                                                            <td><?= $row->noTelp ?></td>
-                                                            <td><?= $row->alamat ?></td>
+                                                            <td><?= $row->tglDiagnosa ?></td>
+                                                            <td><?= $row->keluhan ?></td>
+                                                            <td><?= $row->keterangan ?></td>
                                                             <td>
-                                                                <a href="<?= $hostToRoot ?>edit-data-dokter?idUser=<?= $row->idUser ?>" class="text-white"><button class="btn btn-info button-indent" id="btnEditDokter"><i class="fa fa-edit"></i> Ubah</button></a>
-                                                                <a href="<?= $hostToRoot ?>functions/hapus-dokter?idUser=<?= $row->idUser ?>" id="hapusDokter"><button class="btn btn-danger button-indent" id="btnHapusDokter" data-nama="<?= $row->nama ?>"><i class="fa fa-trash text-white"></i></a> Hapus</button>
+                                                                <a href="<?= $hostToRoot ?>info-transaksi?idDiagnosa=<?= $row->idDiagnosa ?>" class="text-white"><button class="btn btn-info button-indent" id="btnEditDokter"><i class="fa fa-edit"></i> Info</button></a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
