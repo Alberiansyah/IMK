@@ -57,7 +57,7 @@ $no2 = 1;
                                                     <th>Nama</th>
                                                     <th>Email</th>
                                                     <th>Jenis Kelamin</th>
-                                                    <th>Tanggal Diagnos</th>
+                                                    <th>Tanggal Diagnosa</th>
                                                     <th>Keluhan</th>
                                                     <th>Keterangan</th>
                                                     <th>Aksi</th>

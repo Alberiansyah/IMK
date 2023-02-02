@@ -53,7 +53,7 @@ $queryLevel = tampilDataFetchOnly("SELECT * FROM tb_level WHERE namaLevel = 'PAS
                                     </div>
                                     <label for="noTelp" class="form-label"><b>Nomer Telepon</b></label>
                                     <input type="text" class="form-control" name="noTelp" id="noTelp" placeholder="Masukkan Nomer Telepon ..." required>
-                                    <label for="alamat" class="form-label"><b>Nomer Telepon</b></label>
+                                    <label for="alamat" class="form-label"><b>Alamat</b></label>
                                     <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat ..."></textarea>
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>

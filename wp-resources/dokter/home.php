@@ -91,7 +91,7 @@ $no = 1;
                                         <tbody>
                                             <?php foreach ($queryDiagnosaSelesai as $row) : ?>
                                                 <tr>
-                                                    <td><?= $no2++ ?></td>
+                                                    <td><?= $no++ ?></td>
                                                     <td><?= $row->nama ?></td>
                                                     <td><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></td>
                                                     <td><?= $row->jk ?></td>

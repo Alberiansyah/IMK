@@ -38,25 +38,6 @@ $i = 1;
                 <?php endif; ?>
             <?php endif; ?>
 
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><i class=""></i>
-                    <div class="card mt-n3">
-                        <div class="card-body">
-                            <div class="float-right">
-                            </div>
-                            <h5 class="card-title">Pencarian Pasien</h5>
-                            <div class="row justify-content-center">
-                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="search" name="cariPasien" id="cariPasien" class="form form-control md-0" placeholder="Cari Email Pasien ...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div id="reset">
                 <div id="search">
                     <div class="row">
@@ -64,8 +45,6 @@ $i = 1;
                             <div class="card mt-n3">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <div class="float-right">
-                                        </div>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>

@@ -148,10 +148,6 @@ $(document).ready(function(){
     
 });
 
-
-// $("#dataObatList").click(function(){
-// });
-
 $("#resetObat").click(function(){
     $(".obatTerpilih").load(location.href+" .obatTerpilih>*","");
 });

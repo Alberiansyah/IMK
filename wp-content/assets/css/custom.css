@@ -38,4 +38,13 @@
 .bottom-align-text {
     position: fixed;
     bottom: 0;
-  }
+  
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+.alert{
+    display: none;
+}

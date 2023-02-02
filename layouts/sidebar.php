@@ -48,14 +48,14 @@
                             <i class="fa fa-capsules fa-fw"></i><span class="ml-3">Data Obat</span>
                         </a>
                     </li>
-                    <li id="data-resep">
-                        <a href="data-resep" id="dataResep">
-                            <i class="fas fa-receipt fa-fw"></i><span class="ml-3">Data Resep</span>
-                        </a>
-                    </li>
                     <li id="data-pasien">
                         <a href="data-pasien" id="dataPasien">
                             <i class="fa fa-users fa-fw"></i><span class="ml-3">Data Pasien</span>
+                        </a>
+                    </li>
+                    <li id="data-resep">
+                        <a href="data-resep" id="dataResep">
+                            <i class="fas fa-receipt fa-fw"></i><span class="ml-3">Data Resep</span>
                         </a>
                     </li>
                     <li id="laporan">

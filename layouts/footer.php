@@ -14,12 +14,12 @@
 <script src="<?= $hostToRoot ?>wp-content/assets/plugins/switchery/switchery.min.js"></script>
 <script src="<?= $hostToRoot ?>wp-content/assets/plugins/sweetalert/js/sweetalert2.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Data Tables -->
+<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<!-- Custom -->
 <script src="<?= $hostToRoot ?>wp-content/assets/js/concept.min.js"></script>
 <script src="<?= $hostToRoot ?>wp-content/assets/js/custom.js?v=<?= time() ?>"></script>
 <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<!-- Data Tables -->
-<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script>
     $(function() {
         $(".table").DataTable({

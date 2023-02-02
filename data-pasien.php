@@ -44,7 +44,7 @@ $i = 1;
                             <div class="card mt-n3">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <div class="float-right">
+                                        <div class="float-right mb-3">
                                             <a href="<?= $hostToRoot ?>tambah-pasien"><button class="btn btn-primary text-white" title="Tambah Pasien"><i class="fa fa-plus"></i></button></a>
                                         </div>
                                         <table class="table table-hover">

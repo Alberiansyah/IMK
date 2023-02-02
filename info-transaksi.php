@@ -41,35 +41,63 @@ $no = 1;
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="card mt-n3">
                     <div class="card-body">
-                        <center>
-                            <table class="">
-                                <tr>
-                                    <td>Id Diagnosa</td>
-                                    <td>:</td>
-                                    <td><input type="text" class="form-control" value="<?= $tampilSemuaInfoHeader->idDiagnosa ?>" readonly></td>
-                                </tr>
-                                <tr>
-                                    <td>Id Transaksi</td>
-                                    <td>:</td>
-                                    <td><input type="text" class="form-control" value="<?= $tampilSemuaInfoHeader->idTransaksi ?>" readonly></td>
-                                </tr>
-                                <tr>
-                                    <td>Nama Pasien</td>
-                                    <td>:</td>
-                                    <td><input type="text" class="form-control" value="<?= $tampilSemuaInfoHeader->nama ?>" readonly></td>
-                                </tr>
-                                <tr>
-                                    <td>Total Harga Obat</td>
-                                    <td>:</td>
-                                    <td><input type="text" class="form-control" value="Rp. <?= number_format($tampilTotal->total, 0, ',', '.') ?>" readonly></td>
-                                </tr>
-                            </table>
-                        </center>
-                        <br>
-                        <h2 class="text-center">Detail Info</h3>
-                            <br>
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                <h4>Id Diagnosa</h4>
+                            </dt>
+                            <dd class="col-sm-10">
+                                <dl class="row">
+                                    <dt class="col-sm-0">
+                                        <h4>:</h4>
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        <h4><?= $tampilSemuaInfoHeader->idDiagnosa ?></h4>
+                                    </dd>
+                                </dl>
+                            </dd>
+                            <dt class="col-sm-2">
+                                <h4>Id Transaksi</h4>
+                            </dt>
+                            <dd class="col-sm-10">
+                                <dl class="row">
+                                    <dt class="col-sm-0">
+                                        <h4>:</h4>
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        <h4><?= $tampilSemuaInfoHeader->idTransaksi ?></h4>
+                                    </dd>
+                                </dl>
+                            </dd>
+                            <dt class="col-sm-2">
+                                <h4>Nama Pasien</h4>
+                            </dt>
+                            <dd class="col-sm-10">
+                                <dl class="row">
+                                    <dt class="col-sm-0">
+                                        <h4>:</h4>
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        <h4><?= $tampilSemuaInfoHeader->nama ?></h4>
+                                    </dd>
+                                </dl>
+                            </dd>
+                            <dt class="col-sm-2">
+                                <h4>Total Harga</h4>
+                            </dt>
+                            <dd class="col-sm-10">
+                                <dl class="row">
+                                    <dt class="col-sm-0">
+                                        <h4>:</h4>
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        <h4>Rp. <?= number_format($tampilTotal->total, 0, ',', '.') ?></h4>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                        <h3 class="text-center">Detail Info</h1>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
+                                <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -92,7 +120,7 @@ $no = 1;
                                                 <td><?= $row->tglDiagnosa ?></td>
                                                 <td><?= $row->keluhan ?></td>
                                                 <td><?= $row->namaObat ?></td>
-                                                <td><?= $row->hargaObat ?></td>
+                                                <td>Rp. <?= number_format($row->hargaObat, 0, '.', '.') ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

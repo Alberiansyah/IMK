@@ -39,25 +39,6 @@ $i = 1;
                 <?php endif; ?>
             <?php endif; ?>
 
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><i class=""></i>
-                    <div class="card mt-n3">
-                        <div class="card-body">
-                            <div class="float-right">
-                            </div>
-                            <h5 class="card-title">Pencarian Obat</h5>
-                            <div class="row justify-content-center">
-                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="search" name="cariObat" id="cariObat" class="form form-control md-0" placeholder="Cari Nama Obat ...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div id="reset">
                 <div id="search">
                     <div class="row">
@@ -65,7 +46,7 @@ $i = 1;
                             <div class="card mt-n3">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <div class="float-right">
+                                        <div class="float-right mb-3">
                                             <a href="<?= $hostToResources ?>dokter/tambah-obat"><button class="btn btn-primary text-white" title="Tambah Obat"><i class="fa fa-plus"></i></button></a>
                                         </div>
                                         <table class="table table-hover">

@@ -29,7 +29,7 @@
                 <ul class="nav navbar-nav mr-auto">
                     <li class="collapsed-sidebar-toggle-inv"><a href="javascript:void(0)" id="collapsed-sidebar-toggle-button"><i class="fas fa-bars"></i></a></li>
                     <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand"></i></a></li>
-                    <li><a href="javascript:void(0)" id="search-button"><i class="fas fa-search"></i></a></li>
+                    <!-- <li><a href="javascript:void(0)" id="search-button"><i class="fas fa-search"></i></a></li> -->
                 </ul>
             </div><!-- /.navbar-collapse -->
             <ul class="nav navbar-nav">

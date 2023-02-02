@@ -45,7 +45,7 @@ $i = 1;
                             <div class="card mt-n3">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <div class="float-right">
+                                        <div class="float-right mb-3">
                                             <a href="<?= $hostToRoot ?>tambah-obat"><button class="btn btn-primary text-white" title="Tambah Obat"><i class="fa fa-plus"></i></button></a>
                                         </div>
                                         <table class="table table-hover">
@@ -66,7 +66,7 @@ $i = 1;
                                                         <td><?= $row->namaObat ?></td>
                                                         <td><?= $row->stokObat ?></td>
                                                         <td><?= $row->jenisObat ?></td>
-                                                        <td><?= $row->hargaObat ?></td>
+                                                        <td>Rp. <?= number_format($row->hargaObat, 0, '.', '.') ?></td>
                                                         <td>
                                                             <a href="<?= $hostToRoot ?>edit-data-obat?idObat=<?= $row->idObat ?>" class="text-white"><button class="btn btn-info button-indent" id="btnEditDokter" title="Edit Obat"><i class="fa fa-edit"></i> Ubah</button></a>
                                                             <a href="<?= $hostToRoot ?>functions/hapus-obat?idObat=<?= $row->idObat ?>" id="hapusObat"><button class="btn btn-danger button-indent" id="btnHapusObat" data-nama="<?= $row->namaObat ?>" title="Hapus Obat"><i class="fa fa-trash text-white"></i></a> Hapus</button>

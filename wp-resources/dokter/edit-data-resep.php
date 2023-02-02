@@ -39,9 +39,9 @@ $tampilEditResep = tampilDataFetchOnly("SELECT * FROM tb_resep INNER JOIN tb_oba
                                 <label for="namaObat" class="form-label"><b>Nama Obat</b></label>
                                 <input type="text" class="form-control" value="<?= $tampilEditResep->namaObat ?>" placeholder="Masukkan Nama Obat ..." required disabled>
                                 <label for="resepInfo" class="form-label"><b>Resep Info</b></label>
-                                <textarea class="form-control" name="resepInfo" id="resepInfo" placeholder=" Masukkan Resep Info" required><?= $tampilEditResep->resepInfo ?></textarea>
+                                <textarea class="form-control" name="resepInfo" id="resepInfo" placeholder=" Masukkan Resep Info ..." required><?= $tampilEditResep->resepInfo ?></textarea>
                                 <label for="resepDosis" class="form-label"><b>Resep Dosis</b></label>
-                                <input type="text" class="form-control" name="resepDosis" id="resepDosis" value="<?= $tampilEditResep->resepDosis ?>" placeholder=" Masukkan Resep Dosis ..." required>
+                                <textarea class="form-control" name="resepDosis" id="resepDosis" placeholder="Masukkan Resep Dosis ..." required><?= $tampilEditResep->resepDosis ?></textarea>
                             </div>
                             <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
                         </form>

@@ -4,7 +4,7 @@ require __DIR__ . '/functions/session-check.php';
 
 $idUserSesion =  $_SESSION['idUser'];
 $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
-$dataObat = tampilData("SELECT idObat, namaObat FROM tb_obat WHERE NOT EXISTS (SELECT idObat FROM tb_resep)");
+$dataObat = tampilData("SELECT * FROM tb_obat WHERE idObat NOT IN (SELECT idObat FROM tb_resep)");
 
 ?>
 <?php require __DIR__ . '/../../layouts/resources.php'; ?>
