@@ -42,59 +42,6 @@ $(document).ready(function(){
         }
     });
 
-    // Search Shortcut
-    $(document).keydown(function(event) {
-        if (event.ctrlKey && event.which == 13){
-            $("a#search-button").trigger("click"); 
-            event.preventDefault();
-        }
-    });
-
-    // Search Dokter
-    $(document).on('keyup', '#cariDokter', function(){
-        if($('#cariDokter').val() === ''){
-            $("#search").load(location.href+" #search>*","");
-        }else{
-            $('#search').load('functions/cari-dokter?keyword=' + encodeURIComponent($('#cariDokter').val()));
-        }
-    });
-
-    // Search Pasien
-    $(document).on('keyup', '#cariPasien', function(){
-        if($('#cariPasien').val() === ''){
-            $("#search").load(location.href+" #search>*","");
-        }else{
-            $('#search').load('functions/cari-pasien?keyword=' + encodeURIComponent($('#cariPasien').val()));
-        }
-    });
-
-    // Search Pasien Transaksi
-    $(document).on('keyup', '#cariPasienTransaksi', function(){
-        if($('#cariPasienTransaksi').val() === ''){
-            $("#searchPasienTransaksi").load(location.href+" #searchPasienTransaksi>*","");
-        }else{
-            $('#searchPasienTransaksi').load('functions/cari-pasien?keyword=' + encodeURIComponent($('#cariPasienTransaksi').val()));
-        }
-    });
-
-    // Search Obat
-    $(document).on('keyup', '#cariObat', function(){
-        if($('#cariObat').val() === ''){
-            $("#search").load(location.href+" #search>*","");
-        }else{
-            $('#search').load('functions/cari-obat?keyword=' + encodeURIComponent($('#cariObat').val()));
-        }
-    });
-
-    // Search Resep
-    $(document).on('keyup', '#cariResep', function(){
-        if($('#cariResep').val() === ''){
-            $("#search").load(location.href+" #search>*","");
-        }else{
-            $('#search').load('functions/cari-resep?keyword=' + encodeURIComponent($('#cariResep').val()));
-        }
-    });
-
     $(document).on("click", "#btnHapusDokter", function(e){    
         e.preventDefault()
         const nama = $(this).data("nama");

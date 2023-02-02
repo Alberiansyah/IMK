@@ -42,7 +42,7 @@ $no = 1;
                 <div class="card mt-n3">
                     <div class="card-body">
                         <center>
-                            <table class="  ">
+                            <table class="">
                                 <tr>
                                     <td>Id Diagnosa</td>
                                     <td>:</td>
@@ -70,16 +70,18 @@ $no = 1;
                             <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Pasien</th>
-                                        <th>Email</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Tanggal Diagnosa</th>
-                                        <th>Keluhan</th>
-                                        <th>Nama Obat</th>
-                                        <th>Harga Obat</th>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Pasien</th>
+                                            <th>Email</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Tanggal Diagnosa</th>
+                                            <th>Keluhan</th>
+                                            <th>Nama Obat</th>
+                                            <th>Harga Obat</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <?php foreach ($tampilSemuaInfo as $row) : ?>
                                             <tr>

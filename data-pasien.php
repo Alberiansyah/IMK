@@ -5,7 +5,6 @@ require __DIR__ . '/functions/session-check.php';
 $idUserSesion =  $_SESSION['idUser'];
 $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
 $queryPasien = tampilData("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_level.namaLevel = 'PASIEN'");
-$countData = count($queryPasien);
 $i = 1;
 ?>
 <?php require __DIR__ . '/layouts/resources.php'; ?>
@@ -38,25 +37,6 @@ $i = 1;
                 <?php endif; ?>
             <?php endif; ?>
 
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><i class=""></i>
-                    <div class="card mt-n3">
-                        <div class="card-body">
-                            <div class="float-right">
-                            </div>
-                            <h5 class="card-title">Pencarian Pasien</h5>
-                            <div class="row justify-content-center">
-                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="search" name="cariPasien" id="cariPasien" class="form form-control md-0" placeholder="Cari Email Pasien ...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div id="reset">
                 <div id="search">
                     <div class="row">
@@ -80,26 +60,20 @@ $i = 1;
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if ($countData < 1) : ?>
+                                                <?php foreach ($queryPasien as $row) : ?>
                                                     <tr>
-                                                        <td colspan="8" style="text-align: center;">Tidak terdapat data pasien, silahkan tambah terlebih dahulu.</td>
+                                                        <td><?= $i++ ?></td>
+                                                        <td><?= $row->nama ?></td>
+                                                        <td><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></td>
+                                                        <td><?= $row->jk ?></td>
+                                                        <td><?= $row->noTelp ?></td>
+                                                        <td><?= $row->alamat ?></td>
+                                                        <td>
+                                                            <a href="<?= $hostToRoot ?>edit-data-pasien?idUser=<?= $row->idUser ?>" class="text-white" title="Edit Dokter"><button class="btn btn-info button-indent" id="btnEditDokter"><i class="fa fa-edit"></i> Ubah</button></a>
+                                                            <a href="<?= $hostToRoot ?>functions/hapus-pasien?idUser=<?= $row->idUser ?>" id="hapusPasien" title="Hapus Dokter"><button class="btn btn-danger button-indent" id="btnHapusPasien" data-nama="<?= $row->nama ?>"><i class="fa fa-trash text-white"></i></a> Hapus</button>
+                                                        </td>
                                                     </tr>
-                                                <?php else : ?>
-                                                    <?php foreach ($queryPasien as $row) : ?>
-                                                        <tr>
-                                                            <td><?= $i++ ?></td>
-                                                            <td><?= $row->nama ?></td>
-                                                            <td><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></td>
-                                                            <td><?= $row->jk ?></td>
-                                                            <td><?= $row->noTelp ?></td>
-                                                            <td><?= $row->alamat ?></td>
-                                                            <td>
-                                                                <a href="<?= $hostToRoot ?>edit-data-pasien?idUser=<?= $row->idUser ?>" class="text-white"><button class="btn btn-info button-indent" id="btnEditDokter"><i class="fa fa-edit"></i> Ubah</button></a>
-                                                                <a href="<?= $hostToRoot ?>functions/hapus-pasien?idUser=<?= $row->idUser ?>" id="hapusPasien"><button class="btn btn-danger button-indent" id="btnHapusPasien" data-nama="<?= $row->nama ?>"><i class="fa fa-trash text-white"></i></a> Hapus</button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>

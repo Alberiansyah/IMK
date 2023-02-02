@@ -4,6 +4,17 @@ require __DIR__ . '/functions/session-check.php';
 
 $idUserSesion =  $_SESSION['idUser'];
 $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
+
+$queryDokter = tampilData("SELECT * FROM tb_users WHERE idLevel = '9lKih'");
+$queryObat = tampilData("SELECT * FROM tb_obat");
+$queryPasien = tampilData("SELECT * FROM tb_users WHERE idLevel = 'Vts7f'");
+
+$totalDokter = count($queryDokter);
+$totalObat = count($queryObat);
+$totalPasien = count($queryPasien);
+
+$queryDiagnosaSelesai = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_users ON tb_users.idUser = tb_diagnosa.idPasien WHERE tb_diagnosa.keterangan = 'SELESAI'");
+$no = 1;
 ?>
 <?php require __DIR__ . '/../../layouts/resources.php'; ?>
 
@@ -26,33 +37,79 @@ $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb
             </div>
 
             <div class="row">
-                <?php foreach ($query as $row) : ?>
-                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-12">
-                        <div class="card">
-                            <a href="<?= $hostToResources . $row->url ?>">
-                                <?php if ($row->showcase == '') : ?>
-                                    <img src="<?= $hostToRoot ?>wp-content/img/projek-images/default.png" class="card-img-top " alt="<?= $row->namaProjek ?>" title="<?= $row->namaProjek ?>">
-                                <?php else : ?>
-                                    <img src="<?= $hostToRoot ?>wp-content/img/projek-images/<?= $row->showcase ?>" class="card-img-top" alt="<?= $row->namaProjek ?>" title="<?= $row->namaProjek ?>">
-                                <?php endif; ?>
-                            </a>
-                            <div class="card-body">
-                                <b>
-                                    <h1 class="card-title text-center"><?= $row->namaProjek ?></h1>
-                                </b>
-                                <p class="card-text">
-                                    <?= $row->deskripsi ?>
-                                </p>
-                                <div class="text-center">
-                                    <a href="<?= $hostToResources . $row->url ?>" class="btn btn-outline-success">Menuju ke Aplikasi</a>
-                                    <a href="<?= $row->gitHubUrl ?>" target="_blank"><button class="btn btn-primary"><i class="fa fa-star" style="color:yellow"></i> Star</button></a>
+                <div class="col-12">
+                    <div class="card mt-n3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ds-stat">
+                                        <span class="ds-stat-name">Dokter</span>
+                                        <h3 class="ds-stat-number"><?= $totalDokter ?>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ds-stat">
+                                        <span class="ds-stat-name">Obat</span>
+                                        <h3 class="ds-stat-number"><?= $totalObat ?>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ds-stat">
+                                        <span class="ds-stat-name">Pasien</span>
+                                        <h3 class="ds-stat-number"><?= $totalPasien ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
 
-        </div><!-- Main Wrapper -->
+            <div class="content-header">
+                <h1 class="page-title ml-3">Transaksi Terakhir</h1>
+            </div <div id="reset">
+            <div id="search">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="card mt-n3">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div class="float-right">
+                                    </div>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>Tanggal Diagnosa</th>
+                                                <th>Keluhan</th>
+                                                <th>Keterangan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($queryDiagnosaSelesai as $row) : ?>
+                                                <tr>
+                                                    <td><?= $no2++ ?></td>
+                                                    <td><?= $row->nama ?></td>
+                                                    <td><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></td>
+                                                    <td><?= $row->jk ?></td>
+                                                    <td><?= $row->tglDiagnosa ?></td>
+                                                    <td><?= $row->keluhan ?></td>
+                                                    <td><?= $row->keterangan ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+    </div><!-- Main Wrapper -->
+
+    <?php require __DIR__ . '/../../layouts/footer.php'; ?>
