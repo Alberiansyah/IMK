@@ -26,6 +26,7 @@
     <link href="<?= $hostToRoot ?>wp-content/assets/css/concept.min.css" rel="stylesheet">
     <link href="<?= $hostToRoot ?>wp-content/assets/css/custom.css?v=<?= time() ?>" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
