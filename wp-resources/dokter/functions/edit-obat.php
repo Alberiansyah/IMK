@@ -8,6 +8,7 @@ $namaObat = htmlspecialchars($_POST['namaObat']);
 $stokObat = htmlspecialchars($_POST['stokObat']);
 $jenisObat = htmlspecialchars($_POST['jenisObat']);
 $hargaObat = htmlspecialchars($_POST['hargaObat']);
+$tanggalDiubah = date("Y-m-d H:i:s");
 
 $query = $pdo->prepare("UPDATE tb_obat SET
                                         namaObat = ?,
@@ -17,7 +18,7 @@ $query = $pdo->prepare("UPDATE tb_obat SET
                                         tanggalDiubah = ?
                                         WHERE idObat = ?
                         ");
-$query->execute([$namaObat, $stokObat, $jenisObat, $hargaObat, null, $id]);
+$query->execute([$namaObat, $stokObat, $jenisObat, $hargaObat, $tanggalDiubah, $id]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil diperbaharui'];

@@ -73,7 +73,7 @@ $i = 1;
                                                             <td><?= $row->alamat ?></td>
                                                             <td>
                                                                 <a href="<?= $hostToResources ?>dokter/tambah-diagnosa?idPasien=<?= $row->idUser ?>"><button class="btn btn-primary button-indent"><i class="fa fa-plus fa-fw"></i> Diagnosa Baru</button></a>
-                                                                <a href="<?= $hostToResources ?>dokter/data-diagnosa"><button class="btn btn-info button-indent"><i class="fa fa-info fa-fw"></i> Data Diagnosa</button></a>
+                                                                <a href="<?= $hostToResources ?>dokter/data-diagnosa?idPasien=<?= $row->idUser ?>"><button class="btn btn-info button-indent"><i class="fa fa-info fa-fw"></i> Data Diagnosa</button></a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>

@@ -31,6 +31,8 @@ $(document).ready(function(){
             $("#data-pasien").addClass("active-page");
         }else if(urlFinal == 'edit-data-pasien'){
             $("#data-pasien").addClass("active-page");
+        }else if(urlFinal == 'data-diagnosa'){
+            $("#data-pasien").addClass("active-page");
         }else if(urlFinal == 'laporan'){
             $("#laporan").addClass("active-page");
         }else if(urlFinal == 'tambah-transaksi'){

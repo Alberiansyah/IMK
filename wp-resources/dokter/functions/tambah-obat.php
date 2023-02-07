@@ -71,8 +71,8 @@ $stokObat = htmlspecialchars($_POST['stokObat']);
 $jenisObat = htmlspecialchars($_POST['jenisObat']);
 $hargaObat = htmlspecialchars($_POST['hargaObat']);
 
-$query = $pdo->prepare("INSERT INTO tb_obat (idObat, namaObat, stokObat, jenisObat, hargaObat, tanggalDibuat, tanggalDiubah) VALUE(?, ?, ?, ?, ?, ?, ?)");
-$query->execute([$id, $namaObat, $stokObat, $jenisObat, $hargaObat, null, null]);
+$query = $pdo->prepare("INSERT INTO tb_obat (idObat, namaObat, stokObat, jenisObat, hargaObat) VALUE(?, ?, ?, ?, ?)");
+$query->execute([$id, $namaObat, $stokObat, $jenisObat, $hargaObat]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];

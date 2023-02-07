@@ -4,7 +4,10 @@ require __DIR__ . '/functions/session-check.php';
 
 $idUserSesion =  $_SESSION['idUser'];
 $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
-$queryDiagnosa = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_users WHERE tb_users.idUser = tb_diagnosa.idPasien");
+
+$idPasien = $_GET['idPasien'];
+
+$queryDiagnosa = tampilData("SELECT * FROM tb_diagnosa INNER JOIN tb_users WHERE tb_users.idUser = tb_diagnosa.idPasien AND tb_users.idUser = '$idPasien'");
 $countData = count($queryDiagnosa);
 $i = 1;
 ?>
@@ -39,25 +42,6 @@ $i = 1;
                 <?php endif; ?>
             <?php endif; ?>
 
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><i class=""></i>
-                    <div class="card mt-n3">
-                        <div class="card-body">
-                            <div class="float-right">
-                            </div>
-                            <h5 class="card-title">Pencarian Pasien</h5>
-                            <div class="row justify-content-center">
-                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="search" name="cariPasien" id="cariPasien" class="form form-control md-0" placeholder="Cari Email Pasien ...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div id="reset">
                 <div id="search">
                     <div class="row">
@@ -79,7 +63,7 @@ $i = 1;
                                             <tbody>
                                                 <?php if ($countData < 1) : ?>
                                                     <tr>
-                                                        <td colspan="8" style="text-align: center;">Tidak terdapat data pasien, silahkan tambah terlebih dahulu.</td>
+                                                        <td colspan="8" style="text-align: center;">Tidak terdapat data diagnosa, silahkan tambah terlebih dahulu.</td>
                                                     </tr>
                                                 <?php else : ?>
                                                     <?php foreach ($queryDiagnosa as $row) : ?>

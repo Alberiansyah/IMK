@@ -8,6 +8,7 @@ $nama = htmlspecialchars($_POST['nama']);
 $email = htmlspecialchars($_POST['email']);
 $noTelp = htmlspecialchars($_POST['noTelp']);
 $alamat = htmlspecialchars($_POST['alamat']);
+$tanggalDiubah = date("Y-m-d H:i:s");
 
 $query = $pdo->prepare("UPDATE tb_users SET
                                         nama = ?,
@@ -17,7 +18,7 @@ $query = $pdo->prepare("UPDATE tb_users SET
                                         tanggalDiubah = ?
                                         WHERE idUser = ?
                         ");
-$query->execute([$nama, $email, $noTelp, $alamat, null, $id]);
+$query->execute([$nama, $email, $noTelp, $alamat, $tanggalDiubah, $id]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil diperbaharui'];

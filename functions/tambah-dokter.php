@@ -97,8 +97,8 @@ if ($cekEmailUsername > 0) {
 // Encrypt Password
 $passwordEncrypt = password_hash($password, PASSWORD_DEFAULT);
 
-$query = $pdo->prepare("INSERT INTO tb_users (idUser, idLevel, username, password, nama, email, jk, noTelp, alamat, tanggalDibuat, tanggalDiubah) VALUE( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$query->execute([$id, $idLevel, $username, $passwordEncrypt, $nama, $email, $jk, $noTelp, $alamat, null, null]);
+$query = $pdo->prepare("INSERT INTO tb_users (idUser, idLevel, username, password, nama, email, jk, noTelp, alamat) VALUE( ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$query->execute([$id, $idLevel, $username, $passwordEncrypt, $nama, $email, $jk, $noTelp, $alamat]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];

@@ -14,6 +14,6 @@ try {
 $hostToRoot = 'http://localhost/UNIKOM/IMK/';
 $hostToResources = 'http://localhost/UNIKOM/IMK/wp-resources/';
 $title = 'IMK | Klinik';
-$version = 'Beta Build 2.0';
+$version = 'Beta Build 2.1';
 
 session_start();

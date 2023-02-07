@@ -10,6 +10,7 @@ $password = htmlspecialchars($_POST['password']);
 $password1 = htmlspecialchars($_POST['password1']);
 $noTelp = htmlspecialchars($_POST['noTelp']);
 $alamat = htmlspecialchars($_POST['alamat']);
+$tanggalDiubah = date("Y-m-d H:i:s");
 
 // Cek Password
 if ($password != $password1) {
@@ -30,7 +31,7 @@ $query = $pdo->prepare("UPDATE tb_users SET
                                         tanggalDiubah = ?
                                         WHERE idUser = ?
                         ");
-$query->execute([$nama, $email, $passwordEncrypt, $noTelp, $alamat, null, $id]);
+$query->execute([$nama, $email, $passwordEncrypt, $noTelp, $alamat, $tanggalDiubah, $id]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil diperbaharui'];

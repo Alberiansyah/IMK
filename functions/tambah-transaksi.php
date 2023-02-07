@@ -77,8 +77,8 @@ for ($i = 0; $i < $idObat2; $i++) {
     $tanggalTransaksi = htmlspecialchars($_POST['tanggalTransaksi']);
     $hargaObat = htmlspecialchars($_POST['hargaObat'][$i]);
 
-    $query = $pdo->prepare("INSERT INTO tb_transaksi (idTransaksi, idDiagnosa, idDokter, idPasien, idObat, tanggalTransaksi, hargaObat, tanggalDibuat, tanggalDiubah) VALUE( ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $query->execute([null, $idDiagnosa, $idDokter, $idPasien, $idObat, $tanggalTransaksi, $hargaObat, null, null]);
+    $query = $pdo->prepare("INSERT INTO tb_transaksi (idTransaksi, idDiagnosa, idDokter, idPasien, idObat, tanggalTransaksi, hargaObat) VALUE( ?, ?, ?, ?, ?, ?, ?)");
+    $query->execute([null, $idDiagnosa, $idDokter, $idPasien, $idObat, $tanggalTransaksi, $hargaObat]);
 }
 
 if ($query) {

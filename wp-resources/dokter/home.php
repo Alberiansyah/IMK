@@ -5,11 +5,9 @@ require __DIR__ . '/functions/session-check.php';
 $idUserSesion =  $_SESSION['idUser'];
 $userSesi = tampilUserArray("SELECT * FROM tb_users INNER JOIN tb_level WHERE tb_level.idLevel = tb_users.idLevel AND tb_users.idUser = ?", [$idUserSesion]);
 
-$queryDokter = tampilData("SELECT * FROM tb_users WHERE idLevel = '9lKih'");
 $queryObat = tampilData("SELECT * FROM tb_obat");
 $queryPasien = tampilData("SELECT * FROM tb_users WHERE idLevel = 'Vts7f'");
 
-$totalDokter = count($queryDokter);
 $totalObat = count($queryObat);
 $totalPasien = count($queryPasien);
 
@@ -41,19 +39,13 @@ $no = 1;
                     <div class="card mt-n3">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="ds-stat">
-                                        <span class="ds-stat-name">Dokter</span>
-                                        <h3 class="ds-stat-number"><?= $totalDokter ?>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
+                                <div class="col-lg-6 col-md-6">
                                     <div class="ds-stat">
                                         <span class="ds-stat-name">Obat</span>
                                         <h3 class="ds-stat-number"><?= $totalObat ?>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6">
+                                <div class="col-lg-6 col-md-6">
                                     <div class="ds-stat">
                                         <span class="ds-stat-name">Pasien</span>
                                         <h3 class="ds-stat-number"><?= $totalPasien ?>

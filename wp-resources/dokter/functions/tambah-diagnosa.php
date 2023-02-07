@@ -70,8 +70,8 @@ $idPasien = htmlspecialchars($_POST['idPasien']);
 $tglDiagnosa = htmlspecialchars($_POST['tglDiagnosa']);
 $keluhan = htmlspecialchars($_POST['keluhan']);
 
-$query = $pdo->prepare("INSERT INTO tb_diagnosa (idDiagnosa, idDokter, idPasien, tglDiagnosa, keluhan, keterangan, tanggalDibuat, tanggalDiubah) VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
-$query->execute([$id, $idDokter, $idPasien, $tglDiagnosa, $keluhan, 'BELUM SELESAI', null, null]);
+$query = $pdo->prepare("INSERT INTO tb_diagnosa (idDiagnosa, idDokter, idPasien, tglDiagnosa, keluhan, keterangan) VALUE(?, ?, ?, ?, ?, ?)");
+$query->execute([$id, $idDokter, $idPasien, $tglDiagnosa, $keluhan, 'BELUM SELESAI']);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];

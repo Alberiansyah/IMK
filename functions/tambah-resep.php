@@ -70,8 +70,8 @@ $idObat = htmlspecialchars($_POST['idObat']);
 $resepInfo = htmlspecialchars($_POST['resepInfo']);
 $resepDosis = htmlspecialchars($_POST['resepDosis']);
 
-$query = $pdo->prepare("INSERT INTO tb_resep (idResep, idObat, resepInfo, resepDosis, tanggalDibuat, tanggalDiubah) VALUE(?, ?, ?, ?, ?, ?)");
-$query->execute([$id, $idObat, $resepInfo, $resepDosis, null, null]);
+$query = $pdo->prepare("INSERT INTO tb_resep (idResep, idObat, resepInfo, resepDosis) VALUE(?, ?, ?, ?)");
+$query->execute([$id, $idObat, $resepInfo, $resepDosis]);
 
 if ($query) {
     $_SESSION['berhasil'] = ['type' => true, 'message' => 'Data berhasil ditambahkan'];
