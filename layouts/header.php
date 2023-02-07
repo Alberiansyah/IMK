@@ -34,7 +34,7 @@
             </div><!-- /.navbar-collapse -->
             <ul class="nav navbar-nav">
                 <li class="dropdown nav-item d-md-block">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?= $hostToRoot ?>/wp-content/assets/images/avatars/avatar1.png" alt="" class="rounded-circle"></a>
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?= $hostToRoot ?>/wp-content/assets/u-images/default.png" alt="" class="rounded-circle"></a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a href="<?= $hostToRoot ?>logout">Log Out</a></li>
                     </ul>
